@@ -1,8 +1,8 @@
 import { pool } from './database';
-import { DatabaseError, CalculationError } from './errors';
+import { NotFoundError, CalculationError } from './errors';
 
 export interface Business {
-  id?: number;
+  id: number;
   name: string;
   address: string;
   tax_id: string;
@@ -71,7 +71,7 @@ async function applyIndustryRiskRule(business: Business): Promise<number> {
     }
   } catch (err) {
     console.error(`Error retrieving industry risk: ${err}`);
-    throw new DatabaseError(`Error retrieving industry risk: ${err}`);
+    throw new NotFoundError(`Error retrieving industry risk: ${err}`);
   }
 }
 
