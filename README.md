@@ -10,7 +10,23 @@ Fully dockerized service, ready to go.
 docker compose up --build
 ```
 
-You can then test the endpoints in Postman
+You can then test the endpoints in Postman. Sample payload to create a business
+
+- Endpoint: 0.0.0.0:3000/api/businesses/
+- Payload:
+```
+{
+  "name": "Business 1",
+  "annual_revenue": 700000,
+  "credit_score": 650,
+  "debt_to_equity_ratio": 0.8,
+  "cash_reserves": 500000,
+  "industry_category": "Finance",
+  "late_payments": 4,
+  "tax_id": "IRS-12345",
+  "address": "abc pensyllvania ave"
+}
+```
 
 ## Architechture
 This uses typescript with express + postgres database as a backend
