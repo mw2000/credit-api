@@ -9,15 +9,15 @@ BEGIN
         -- Create business table
         CREATE TABLE businesses (
             id SERIAL PRIMARY KEY,
-            name VARCHAR(255),
-            address VARCHAR(255),
-            tax_id VARCHAR(50),
-            annual_revenue NUMERIC,
-            late_payments INTEGER,
-            credit_score INTEGER,
-            debt_to_equity_ratio NUMERIC,
-            cash_reserves NUMERIC,
-            industry_category VARCHAR(255)
+            name VARCHAR(255) NOT NULL,
+            address VARCHAR(255) NOT NULL,
+            tax_id VARCHAR(50) NOT NULL,
+            annual_revenue NUMERIC NOT NULL,
+            late_payments INTEGER NOT NULL,
+            credit_score INTEGER NOT NULL,
+            debt_to_equity_ratio NUMERIC NOT NULL,
+            cash_reserves NUMERIC NOT NULL,
+            industry_category VARCHAR(255) NOT NULL
         );
     END IF;
 END $$;

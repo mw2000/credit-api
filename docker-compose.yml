@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db-scripts:/docker-entrypoint-initdb.d
+
   app:
     build: .
     ports:
@@ -8,17 +18,9 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://username:password@db:5432/mydatabase
-
-  db:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./db-scripts:/docker-entrypoint-initdb.d
+      DATABASE_URL: postgres://myuser:mysecretpassword@db:5432/mydb
 
 volumes:
   postgres_data:
+
+
